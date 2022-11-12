@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Enable"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <Color>000000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+function createRecordColorTimer(mainRec,interval)
+    local t = 0;
+	local timer = createTimer()
+	timer.Interval = interval
+	timer.OnTimer = function()
+	    t = t + 0.001
+	    red = math.floor(math.sin(freq*t+redPhase)*mag)+bias
+	    green = math.floor(math.sin(freq*t+greenPhase)*mag)+bias
+	    blue = math.floor(math.sin(freq*t+bluePhase)*mag)+bias
+        local color = (red)+(green&lt;&lt;0x8)+(blue&lt;&lt;0x10)
+        mainRec.Color = color
+    end
+	return timer
+end
+function createBackgroundColorTimer(interval)
+    local t = 0;
+	local timer = createTimer()
+	timer.Interval = interval
+	timer.OnTimer = function()
+	    t = t + 0.001
+	    red = math.floor(math.sin(freq*t+redPhase)*mag)+bias
+	    green = math.floor(math.sin(freq*t+greenPhase)*mag)+bias
+	    blue = math.floor(math.sin(freq*t+bluePhase)*mag)+bias
+        local color = (red)+(green&lt;&lt;0x8)+(blue&lt;&lt;0x10)
+        local addList = GetAddressList()
+		addList.Control[0].BackgroundColor = color
+    end
+	return timer
+end
+function defineConstants()
+    redPhase = math.pi/4
+    greenPhase = 3*math.pi/4
+    bluePhase = 5*math.pi/4
+    freq = 20
+    mag = 0x6F
+    bias = 0x80
+    --t = 0
+end
+if syntaxcheck then return end
+[ENABLE]
+defineConstants()
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Change Background"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+local addList = GetAddressList()
+addList.Control[0].BackgroundColor = 0xFFFFFF
+[ENABLE]
+bgT = createBackgroundColorTimer(1)
+[DISABLE]
+bgT.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Color Change Me 1"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+m1T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m1T.destroy()
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Color Change Me 2"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+m2T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m2T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Color Change Me 3"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m3T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m3T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Color Change Me 4"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m4T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m4T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Color Change Me 5"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m5T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m5T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Color Change Me 6"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m6T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m6T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Color Change Me 7"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m7T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m7T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Color Change Me 8"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m8T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m8T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Color Change Me 9"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m9T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m9T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Color Change Me 10"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+memrec.Color = 0x000000
+[ENABLE]
+defineConstants()
+m10T = createRecordColorTimer(memrec,1)
+[DISABLE]
+m10T.destroy()
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

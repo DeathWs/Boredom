@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="35">
+  <CheatEntries/>
+  <UserdefinedSymbols/>
+  <LuaScript>if tSettings then tSettings.destroy() tSettings = nil end
+if not tSettings then
+   local ce = getMainForm()
+   tSettings = CreateForm()
+   tSettings.Caption = 'Transparency settings'
+   tSettings.BorderStyle = bsToolwindow
+   tSettings.Width = ce.Width
+   tSettings.Height = 100
+   tSettings.Left = ce.Left + 5
+   tSettings.Top = ce.Top + (ce.Height + ((tSettings.Height / 2) - 15))
+
+   local tb = createTrackBar(tSettings)
+         tb.Height = 25
+         tb.Width = tSettings.Width
+         tb.Align = alTop
+         tb.ShowSelRange = false
+         tb.TickStyle = "tsNone"
+         tb.Min = 1
+         tb.Max = 255
+         tb.Position = 255
+
+   tSettings.Height = tb.Height
+   tb.OnChange = function()
+                 local ce = getMainForm()
+                 --local le = getLuaEngine()
+                 local perc = ((tb.Position/255) * 100)
+                 tSettings.Caption = ('Currently set to: %.f%% transparency'):format(perc)
+                 --le.AlphaBlend = true
+                 --le.AlphaBlendValue = tb.Position
+                 ce.AlphaBlend = true
+                 ce.AlphaBlendValue = tb.Position
+                 end
+
+   tSettings.OnClose = function()
+                       local ce = getMainForm()
+                       --local le = getLuaEngine()
+                       ce.AlphaBlend = false
+                       --le.AlphaBlend = false
+                       tSettings.destroy()
+                       tSettings = nil
+                       end
+end
+</LuaScript>
+</CheatTable>
